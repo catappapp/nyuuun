@@ -93,7 +93,8 @@ header{padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;justify-c
 .tag .inst{padding:1px 8px;border-radius:999px;background:var(--lane2);color:var(--paint)}
 .chip small{font-size:11px;color:var(--dim);margin-left:2px}
 .chip[aria-checked="true"] small{color:inherit;opacity:.7}
-.tools{position:absolute;right:10px;top:10px;display:flex;gap:8px}
+.stagebar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.tools{display:flex;gap:8px}
 .tbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:var(--slab);border:var(--bw) solid var(--line);font-size:13.5px;font-weight:500;min-height:40px}
 .tbtn svg{width:18px;height:18px;flex:none}
 .tbtn[aria-pressed="false"]{color:var(--dim)}
@@ -104,14 +105,14 @@ header{padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;justify-c
 .hint.gone{opacity:0;transform:translate(-50%,-8px)}
 @keyframes bob{50%{margin-bottom:5px}}
 #nogl[hidden]{display:none}
-.oct{position:absolute;right:10px;top:62px;display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;background:var(--slab);border:var(--bw) solid var(--line)}
+.oct{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;background:var(--slab);border:var(--bw) solid var(--line)}
 .oct[hidden]{display:none}
 .oct button{width:38px;height:38px;border-radius:50%;border:0;background:var(--lane2);font-size:20px;line-height:1;font-weight:700}
 .oct button:disabled{opacity:.35}
 .oct span{display:flex;flex-direction:column;align-items:center;min-width:52px;line-height:1.1}
 .oct small{font-size:10px;color:var(--dim)}
 .oct b{font-family:var(--head);font-weight:400;font-size:17px;font-variant-numeric:tabular-nums}
-.modes{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--slab);border:var(--bw) solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.modes{display:flex;justify-content:center;align-self:center;max-width:100%;gap:4px;padding:4px;border-radius:999px;background:var(--slab);border:var(--bw) solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.12)}
 .modes button{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:5px 13px;border:0;border-radius:999px;background:none;font-size:14px;font-family:var(--head);color:var(--dim);white-space:nowrap}
 .modes button svg{width:20px;height:20px;flex:none}
 .modes button span{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
@@ -120,8 +121,29 @@ header{padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;justify-c
 .modes button[aria-checked="true"]{background:var(--accent);color:var(--on-paint)}
 :root[data-skin="lofi"] .modes button[aria-checked="true"],:root[data-skin="night"] .modes button[aria-checked="true"]{color:#15131A}
 .stage.recording{border-color:#FF4D5E;box-shadow:0 0 0 3px #FF4D5E,var(--shadow)}
-.recpill{position:absolute;left:50%;top:14px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FF4D5E;color:#fff;font-weight:700;font-size:14px;pointer-events:none}
+.recpill{position:absolute;right:12px;top:12px;display:flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#FF4D5E;color:#fff;font-weight:700;font-size:14px;pointer-events:none}
 .recpill[hidden]{display:none}
+.recpill.armed{background:var(--slab);color:#FF4D5E;border:2px solid #FF4D5E}
+.recpill.armed i{background:#FF4D5E}
+.countdown{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;color:#FF4D5E;opacity:.42;z-index:3}
+.countdown[hidden]{display:none}
+.countdown b{font-family:var(--mark);font-weight:400;font-size:clamp(110px,34vw,200px);line-height:1;text-shadow:0 4px 0 rgba(255,255,255,.6)}
+.countdown small{font-family:var(--head);font-size:clamp(18px,5vw,26px);margin-top:4px}
+.countdown b.pop{animation:cdpop .35s ease-out}
+@keyframes cdpop{from{transform:scale(1.25)}to{transform:scale(1)}}
+.works{background:var(--slab);border:var(--bw) solid var(--edge);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
+.works[hidden]{display:none}
+.worklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.work{position:relative;display:flex;flex-direction:column;border-radius:18px;background:var(--lane);border:var(--bw) solid var(--line);overflow:hidden}
+.work .wopen{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 12px 10px;border:0;background:none;text-align:left;font-family:var(--head);color:inherit;min-height:96px}
+.work .wopen:active{transform:scale(.98)}
+.work .wdots{display:flex;gap:3px;margin-bottom:2px}
+.work .wdots i{width:14px;height:14px;border-radius:50%;background:hsl(var(--h) 70% 58%)}
+.work b{font-size:16px;font-weight:400}
+.work small{font-size:12px;color:var(--dim);line-height:1.35}
+.work.on{border-color:var(--paint);box-shadow:0 0 0 2px var(--paint)}
+.work .wdel{position:absolute;top:6px;right:6px;width:34px;height:34px;border-radius:50%;border:var(--bw) solid var(--line);background:var(--slab);font-size:13px;color:var(--dim)}
+#worksMsg{font-size:12.5px;color:var(--dim);margin:0}
 .recpill i{width:10px;height:10px;border-radius:50%;background:#fff;animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:.2}}
 .looper{background:var(--slab);border:var(--bw) solid var(--edge);border-radius:var(--radius);padding:14px 16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
@@ -213,8 +235,14 @@ input[type=range]{flex:1 1 200px;accent-color:var(--accent);height:28px}
 .chip i{width:13px;height:13px;border-radius:50%;background:var(--c);border:1px solid rgba(0,0,0,.25)}
 .chip[aria-checked="true"]{background:var(--paint);color:var(--on-paint);border-color:var(--paint)}
 .note{margin:0;font-size:12.5px;color:var(--dim)}
-footer{font-family:var(--dot);font-size:12px;color:var(--dim);text-align:center;letter-spacing:.08em}
-@media (max-width:420px){ .tn small{display:none} .tbtn span{display:none} .tbtn{padding:7px 10px} #tagSub{display:none} .recpill{top:60px} .tn b{font-size:11.5px;white-space:nowrap} .modes button{padding:5px 9px} .modes button svg{display:none} .modes button b{font-size:13px} }
+footer{font-family:var(--dot);font-size:12px;color:var(--dim);text-align:center;letter-spacing:.08em;display:flex;flex-direction:column;align-items:center;gap:10px}
+.share{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;font-family:var(--body);letter-spacing:0}
+.share[hidden]{display:none}
+.share > span{font-size:12px;color:var(--dim);margin-right:2px}
+.share a,.share button{display:inline-flex;align-items:center;gap:5px;min-height:32px;padding:3px 11px;border-radius:999px;border:var(--bw) solid var(--line);background:var(--slab);color:var(--dim);font-size:12px;text-decoration:none;font-family:var(--body)}
+.share svg{width:14px;height:14px;flex:none}
+.share .line{color:#06A94D}
+@media (max-width:420px){ .tn small{display:none} .tbtn span{display:none} .tbtn{padding:7px 10px} #tagSub{display:none} .tn b{font-size:11.5px;white-space:nowrap} .modes button{padding:5px 9px} .modes button svg{display:none} .modes button b{font-size:13px} }
 @media (prefers-reduced-motion:reduce){ .hint{animation:none} *{transition:none!important} }
 </style>
 </head>
@@ -232,11 +260,7 @@ footer{font-family:var(--dot);font-size:12px;color:var(--dim);text-align:center;
     <p class="lede">くろねこの スクイーズは がっき。<b>うえに いくほど たかい おと</b>。ひっぱると にゅいーん。<b>ろくおん</b>して かさねよう。</p>
   </header>
 
-  <section class="stage" id="stage" aria-label="スクイーズであそぶところ">
-    <canvas id="bg" aria-hidden="true"></canvas>
-    <canvas id="gl" aria-hidden="true"></canvas>
-    <canvas id="fxc" aria-hidden="true" style="pointer-events:none"></canvas>
-    <div class="tag" aria-live="polite"><b id="tagName">まんじゅう</b><small id="tagSub">もちもち</small><small id="tagInst" class="inst">ポップ ベル</small></div>
+  <div class="stagebar">
     <div class="tools">
       <button type="button" class="tbtn" id="resetBtn" aria-label="スクイーズを もとに もどす">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.6-5.9"/><path d="M4 4v4h4"/></svg><span>もどす</span>
@@ -245,23 +269,32 @@ footer{font-family:var(--dot);font-size:12px;color:var(--dim);text-align:center;
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" stroke="none"/><path class="wave" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="x" d="M17 9l5 6M22 9l-5 6"/></svg><span>おと オン</span>
       </button>
     </div>
-    <div class="hint" id="hint" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="15" rx="5.2" ry="4.4"/><circle cx="5.6" cy="9.4" r="2.2"/><circle cx="9.4" cy="6" r="2.3"/><circle cx="14.6" cy="6" r="2.3"/><circle cx="18.4" cy="9.4" r="2.2"/></svg>
-      さわってみてね
-    </div>
-    <div class="modes" id="modes" role="radiogroup" aria-label="ひきかた">
-      <button type="button" role="radio" data-mode="mix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="3"/><path d="M13 13l7-7M15 6h5v5"/></svg><span><b>どっちも</b><small>たたく＋のばす</small></span></button>
-      <button type="button" role="radio" data-mode="tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="3.5" fill="currentColor"/><path d="M12 3v3M5 6l2 2M19 6l-2 2"/></svg><span><b>タップだけ</b><small>たたく おとだけ</small></span></button>
-      <button type="button" role="radio" data-mode="pull"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c4 0 5-12 9-12s4 6 7 6"/><path d="M17 9l3 3-3 3"/></svg><span><b>ひっぱるだけ</b><small>のばす おとだけ</small></span></button>
-    </div>
     <div class="oct" id="oct" role="group" aria-label="オクターブ">
       <button type="button" id="octDn" aria-label="オクターブを さげる">−</button>
       <span><small>オクターブ</small><b id="octVal">0</b></span>
       <button type="button" id="octUp" aria-label="オクターブを あげる">＋</button>
     </div>
-    <div class="recpill" id="recPill" hidden><i></i>ろくおん中</div>
+  </div>
+
+  <section class="stage" id="stage" aria-label="スクイーズであそぶところ">
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <canvas id="fxc" aria-hidden="true" style="pointer-events:none"></canvas>
+    <div class="tag" aria-live="polite"><b id="tagName">まんじゅう</b><small id="tagSub">もちもち</small><small id="tagInst" class="inst">ポップ ベル</small></div>
+    <div class="hint" id="hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="15" rx="5.2" ry="4.4"/><circle cx="5.6" cy="9.4" r="2.2"/><circle cx="9.4" cy="6" r="2.3"/><circle cx="14.6" cy="6" r="2.3"/><circle cx="18.4" cy="9.4" r="2.2"/></svg>
+      さわってみてね
+    </div>
+    <div class="recpill" id="recPill" hidden><i></i><span id="recPillText">ろくおん中</span></div>
+    <div class="countdown" id="countdown" hidden aria-live="polite"><b id="cdNum">3</b><small>ろくおん まで</small></div>
     <div id="nogl" hidden><p>この ブラウザでは うごかせません。<br>Chrome や Safari の あたらしい バージョンで ひらいてね。</p></div>
   </section>
+
+  <div class="modes" id="modes" role="radiogroup" aria-label="ひきかた">
+    <button type="button" role="radio" data-mode="mix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="3"/><path d="M13 13l7-7M15 6h5v5"/></svg><span><b>どっちも</b><small>たたく＋のばす</small></span></button>
+    <button type="button" role="radio" data-mode="tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="3.5" fill="currentColor"/><path d="M12 3v3M5 6l2 2M19 6l-2 2"/></svg><span><b>タップだけ</b><small>たたく おとだけ</small></span></button>
+    <button type="button" role="radio" data-mode="pull"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c4 0 5-12 9-12s4 6 7 6"/><path d="M17 9l3 3-3 3"/></svg><span><b>ひっぱるだけ</b><small>のばす おとだけ</small></span></button>
+  </div>
 
   <div class="scalebar" id="scalebar">
     <span class="label">おんかい</span>
@@ -304,8 +337,18 @@ footer{font-family:var(--dot);font-size:12px;color:var(--dim);text-align:center;
     <div class="lrow">
       <button type="button" class="lbtn" id="exportBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>WAV で かきだす</span></button>
       <button type="button" class="lbtn" id="exportWebm"><span>かるい ファイル（webm）</span></button>
-      <p id="exportMsg">「ろくおん」で 1しゅう ろくおん。きこえた おとが そのまま まわるよ。なんかいでも かさねられるよ（バックの おんがくを かえると きえます）。かきだしは 2しゅうぶん（WAV は 48kHz / 24bit、ZIP に はいっています）。</p>
+      <p id="exportMsg">「ろくおん」を おすと、つぎの ループの はじめから おわりまで 1しゅう ろくおん。きこえた おとが そのまま まわるよ。なんかいでも かさねられるよ（バックの おんがくを かえると きえます）。かきだしは 2しゅうぶん（WAV は 48kHz / 24bit、ZIP に はいっています）。</p>
     </div>
+  </section>
+
+  <section class="works" id="works" aria-labelledby="worksH">
+    <h2 id="worksH">さくひん</h2>
+    <div class="lrow">
+      <button type="button" class="lbtn big" id="saveWork"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/></svg><span>さくひんに する</span></button>
+      <p id="worksMsg">かさねた おとを さくひんに して、あとで きいたり つづきを かさねたり できるよ。</p>
+    </div>
+    <div class="worklist" id="workList"></div>
+    <p class="note">さくひんは この たんまつの なかだけに ほぞんされます。</p>
   </section>
 
   <section class="pick" aria-label="スクイーズを えらぶ">
@@ -334,7 +377,16 @@ footer{font-family:var(--dot);font-size:12px;color:var(--dim);text-align:center;
   <div class="askwrap" id="ask" hidden role="dialog" aria-modal="true" aria-labelledby="askText">
     <div class="askcard"><p id="askText"></p><div class="askbtns"><button type="button" id="askNo">やめる</button><button type="button" id="askOk">かえる</button></div></div>
   </div>
-  <footer>Nyuuun! · くろねこ スクイーズ</footer>
+  <footer>
+    <div class="share" id="share" hidden>
+      <span>ともだちに おしえる</span>
+      <button type="button" id="shareNative" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v7h14v-7"/></svg>シェア</button>
+      <a id="shareLine" class="line" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3 0 .7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8.1-6 1.5-1.6 2.2-3.2 2.2-4.8C22 6.6 17.5 3 12 3z"/></svg>LINE</a>
+      <a id="shareX" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.3l-4.9-6.4L5.2 21H2.1l7.3-8.3L1.8 3h6.4l4.4 5.9L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg>X</a>
+      <button type="button" id="shareCopy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span id="shareCopyText">リンクを コピー</span></button>
+    </div>
+    <span class="foot">Nyuuun! · くろねこ スクイーズ</span>
+  </footer>
 </div>
 <script>
 /* ---------- Nyuuun! soft body ----------
@@ -1742,8 +1794,8 @@ root.Sound = Sound; root.NOTE_NAME = NOTE_NAME; root.NOTE_COL = NOTE_COL;
 <script>
 /* ---------- loop station ----------
    A 4-bar loop (16 beats) runs on the audio clock with an optional backing song.
-   ろくおん records exactly one lap of what you play (as note events, in beats), then it becomes a layer that replays every lap.
-   Layers keep the instrument they were played with. Export records two laps of the mix with MediaRecorder. */
+   ろくおん records exactly one lap (top to end) of what you hear, then it becomes a layer that replays every lap.
+   Export: WAV rendered offline, or two laps of the mix with MediaRecorder. */
 (function (root) {
 'use strict';
 const BEATS = 16;
@@ -1851,7 +1903,7 @@ class Looper {
     this.snd.unlock(); if (!this.snd.ctx) return;
     const now = this.snd.now();
     this.t0 = now + 0.08 - atBeat * this.spb; this.done = this.beatAbs(now + 0.08) - 1e-6; this.playing = true;
-    if (atBeat > 0) for (const L of this.layers) this.playLayer(L, now + 0.08, atBeat * this.spb);
+    if (atBeat > 0) for (const L of this.layers) this.playLayer(L, now + 0.08, atBeat * this.spb);   // (atBeat < 0 = count-in before the top)
     clearInterval(this.timer); this.timer = setInterval(() => this.tick(), 25); this.tick();
     this.ui.state && this.ui.state();
   }
@@ -1886,49 +1938,113 @@ class Looper {
       if (this.song === 'none' && !this.exporting) for (let k = 0; k < BEATS; k++) { const b = cyc * BEATS + k; if (b > from && b <= until) this.snd.click(this.t0 + b * this.spb, k % 4 === 0); }
     }
     this.done = until;
-    if (this.rec && now >= this.rec.endT + this.rec.lag) this.finishRec();
+    if (this.rec && this.rec.state === 'armed' && now >= this.rec.startT) { this.rec.state = 'rec'; this.ui.state && this.ui.state(); }
+    if (this.rec && this.rec.mode === 'sp' && now > this.rec.endT + 6) this.finishRec(null);   // fallback safety
   }
 
   /* recording: what you hear is what loops.
-     The instrument bus is captured with a ScriptProcessor; a silent marker on a third channel marks the exact start,
-     so the audio lines up with the beat on every browser whatever the processor's delay. */
+     Pressing ろくおん arms the recorder; it records exactly one lap, from the top of the next lap to its end
+     (when nothing is playing, the loop starts with a one-bar count-in). Capture runs on the audio thread
+     (AudioWorklet, sample-exact by frame number) and only finishes once the whole lap has arrived, so a busy
+     phone cannot cut it short. Browsers without AudioWorklet fall back to a ScriptProcessor with a start marker. */
   record() {
     const S = this.snd; S.unlock(); if (!S.ctx) return;
     if (this.rec) { this.cancelRec(); this.ui.state && this.ui.state(); return; }
-    if (!this.playing) this.start(0);
-    const c = S.ctx, startT = this.playing && this.t0 > S.now() ? this.t0 : S.now() + 0.05;
-    const n = 2048, sp = c.createScriptProcessor(n, 5, 1), mg = c.createChannelMerger(5), sd = c.createChannelSplitter(2), sw = c.createChannelSplitter(2), sink = c.createGain(); sink.gain.value = 0;
-    S.dryBus.connect(sd); sd.connect(mg, 0, 0); sd.connect(mg, 1, 1);
-    S.wetBus.connect(sw); sw.connect(mg, 0, 2); sw.connect(mg, 1, 3);
-    const mk = c.createBuffer(1, 128, c.sampleRate); mk.getChannelData(0).fill(1, 0, 4); const ms = c.createBufferSource(); ms.buffer = mk; ms.connect(mg, 0, 4); ms.start(startT);
-    mg.connect(sp); sp.connect(sink); sink.connect(c.destination);
-    const r = this.rec = { id: this.nextId++, startT, endT: startT + this.loopSec, lag: 0.45, sp, mg, sd, sw, sink, ch: [[], [], [], [], []], sr: c.sampleRate };
-    sp.onaudioprocess = e => { const ib = e.inputBuffer; for (let k = 0; k < 5; k++) r.ch[k].push(ib.getChannelData(k).slice()); };
+    if (!this.playing) this.start(-4);   // one bar of count-in before the top
+    const now = S.now(), L = this.loopSec;
+    let startT = this.t0; if (startT < now + 0.06) startT = this.t0 + Math.ceil((now + 0.06 - this.t0) / L) * L;
+    const r = this.rec = { id: this.nextId++, state: 'armed', startT, endT: startT + L, sr: S.ctx.sampleRate };
+    this.captureStart(r).catch(e => { console.warn('rec: worklet capture unavailable (' + (e && e.message) + '), using fallback'); if (this.rec === r) this.captureFallback(r); });
     this.ui.state && this.ui.state();
   }
-  teardown(r) { r.sp.onaudioprocess = null; for (const x of ['sp', 'mg', 'sd', 'sw', 'sink']) try { r[x].disconnect(); } catch (e) {} try { this.snd.dryBus.disconnect(r.sd); } catch (e) {} try { this.snd.wetBus.disconnect(r.sw); } catch (e) {} }
+  async captureStart(r) {
+    const c = this.snd.ctx;
+    if (!c.audioWorklet || typeof AudioWorkletNode === 'undefined') throw new Error('no worklet');
+    if (!this._wl) {
+      const code = `class R extends AudioWorkletProcessor{constructor(){super();this.j=null;this.port.onmessage=e=>{const d=e.data;if(d.cmd==='arm')this.j={s:d.start,n:d.len,b:[new Float32Array(d.len),new Float32Array(d.len),new Float32Array(d.len),new Float32Array(d.len)]};else this.j=null;};}
+process(ins){const j=this.j;if(!j)return true;const f0=currentFrame,m=(ins[0]&&ins[0][0]&&ins[0][0].length)||128;
+for(let k=0;k<m;k++){const i=f0+k-j.s;if(i<0)continue;if(i>=j.n)break;for(let c=0;c<4;c++){const inp=ins[c>>1]||[],ch=inp[c&1]||inp[0];j.b[c][i]=ch?ch[k]:0;}}
+if(f0+m>=j.s+j.n){this.port.postMessage({done:1,b:j.b},j.b.map(x=>x.buffer));this.j=null;}return true;}}
+registerProcessor('ny-rec',R);`;
+      // blob: first; some pages (file://, strict sandboxes) refuse it, so try a data: URL before giving up
+      const blobUrl = URL.createObjectURL(new Blob([code], { type: 'application/javascript' }));
+      this._wl = c.audioWorklet.addModule(blobUrl).catch(() => c.audioWorklet.addModule('data:application/javascript;charset=utf-8,' + encodeURIComponent(code)));
+      this._wl.catch(() => { this._wl = null; });
+    }
+    await this._wl;
+    if (this.rec !== r) return;
+    const node = new AudioWorkletNode(c, 'ny-rec', { numberOfInputs: 2, numberOfOutputs: 1, outputChannelCount: [1], channelCount: 2, channelCountMode: 'explicit' });
+    const sink = c.createGain(); sink.gain.value = 0;
+    this.snd.dryBus.connect(node, 0, 0); this.snd.wetBus.connect(node, 0, 1); node.connect(sink); sink.connect(c.destination);
+    r.node = node; r.sink = sink; r.mode = 'worklet';
+    const start = Math.round(r.startT * c.sampleRate), len = Math.round(this.loopSec * c.sampleRate);
+    if (start < Math.round(c.currentTime * c.sampleRate) + 64) throw new Error('late');   // too late to catch the top: use the fallback
+    node.port.onmessage = e => { if (e.data && e.data.done && this.rec === r) this.finishRec(e.data.b); };
+    node.port.postMessage({ cmd: 'arm', start, len });
+  }
+  captureFallback(r) {
+    const c = this.snd.ctx, S = this.snd; this.teardown(r);
+    const n = 4096, sp = c.createScriptProcessor(n, 5, 1), mg = c.createChannelMerger(5), sd = c.createChannelSplitter(2), sw = c.createChannelSplitter(2), sink = c.createGain(); sink.gain.value = 0;
+    S.dryBus.connect(sd); sd.connect(mg, 0, 0); sd.connect(mg, 1, 1);
+    S.wetBus.connect(sw); sw.connect(mg, 0, 2); sw.connect(mg, 1, 3);
+    const mk = c.createBuffer(1, 128, c.sampleRate); mk.getChannelData(0).fill(1, 0, 4); const ms = c.createBufferSource(); ms.buffer = mk; ms.connect(mg, 0, 4);
+    if (r.startT < S.now() + 0.03) { r.startT += this.loopSec; r.endT += this.loopSec; }
+    ms.start(r.startT);
+    mg.connect(sp); sp.connect(sink); sink.connect(c.destination);
+    Object.assign(r, { mode: 'sp', sp, mg, sd, sw, sink, ch: [[], [], [], [], []], have: 0, m0: -1 });
+    const N = Math.round(this.loopSec * c.sampleRate);
+    sp.onaudioprocess = e => {
+      const ib = e.inputBuffer; for (let k = 0; k < 5; k++) r.ch[k].push(ib.getChannelData(k).slice());
+      if (r.m0 < 0) { const M = r.ch[4][r.ch[4].length - 1]; for (let i = 0; i < M.length; i++) if (M[i] > 0.5) { r.m0 = r.have + i; break; } }
+      r.have += ib.length;
+      if (r.m0 >= 0 && r.have - r.m0 >= N && this.rec === r) this.finishRec(null);   // the whole lap is in
+    };
+  }
+  teardown(r) {
+    if (r.node) { try { r.node.port.postMessage({ cmd: 'cancel' }); } catch (e) {} try { this.snd.dryBus.disconnect(r.node); } catch (e) {} try { this.snd.wetBus.disconnect(r.node); } catch (e) {} try { r.node.disconnect(); } catch (e) {} r.node = null; }
+    if (r.sp) { r.sp.onaudioprocess = null; for (const x of ['sp', 'mg', 'sd', 'sw']) try { r[x].disconnect(); } catch (e) {} try { this.snd.dryBus.disconnect(r.sd); } catch (e) {} try { this.snd.wetBus.disconnect(r.sw); } catch (e) {} r.sp = null; }
+    if (r.sink) { try { r.sink.disconnect(); } catch (e) {} r.sink = null; }
+  }
   cancelRec() { const r = this.rec; this.rec = null; if (r) this.teardown(r); }
-  finishRec() {
-    const r = this.rec; this.rec = null; if (!r) return; this.teardown(r);
-    const join = a => { const n = a.reduce((s, x) => s + x.length, 0), o = new Float32Array(n); let k = 0; for (const x of a) { o.set(x, k); k += x.length; } return o; };
-    const C = r.ch.map(join), M = C[4];
-    let m0 = -1; for (let i = 0; i < M.length; i++) if (M[i] > 0.5) { m0 = i; break; }
-    if (m0 < 0) { this.ui.state && this.ui.state(); return; }
+  // time left before the recording starts (armed), or before it ends (recording)
+  recStatus() {
+    const r = this.rec; if (!r) return null; const now = this.snd.now();
+    return now < r.startT ? { state: 'armed', left: r.startT - now } : { state: 'rec', left: Math.max(0, r.endT - now), k: Math.min(1, (now - r.startT) / (r.endT - r.startT)) };
+  }
+  finishRec(bufs) {
+    const r = this.rec; this.rec = null; if (!r) return; this.lastMode = r.mode; this.teardown(r);
     const sr = r.sr, N = Math.round(this.loopSec * sr), ctx = this.snd.ctx;
     const dry = ctx.createBuffer(2, N, sr), wet = ctx.createBuffer(2, N, sr), out = [dry.getChannelData(0), dry.getChannelData(1), wet.getChannelData(0), wet.getChannelData(1)];
-    // place the lap at its position in the loop (recording may start mid-lap)
-    const pos0 = Math.round(((((r.startT - this.t0) / this.loopSec) % 1 + 1) % 1) * N) % N, got = Math.min(N, M.length - m0);
-    let peak = 0;
-    for (let ch = 0; ch < 4; ch++) { const src = C[ch], dst = out[ch]; for (let k = 0; k < got; k++) { const v = src[m0 + k]; dst[(pos0 + k) % N] = v; if (ch < 2 && Math.abs(v) > peak) peak = Math.abs(v); } }
-    // smooth the seam where the recording started and ended
-    const F = Math.round(sr * 0.008);
-    for (const dst of out) for (let k = 0; k < F; k++) { const a = k / F; dst[(pos0 + k) % N] *= a; dst[(pos0 + got - 1 - k + N) % N] *= a; }
+    if (bufs) for (let c = 0; c < 4; c++) out[c].set(bufs[c].subarray(0, N));
+    else {
+      const join = a => { const n = a.reduce((s, x) => s + x.length, 0), o = new Float32Array(n); let k = 0; for (const x of a) { o.set(x, k); k += x.length; } return o; };
+      const C = r.ch.map(join); if (r.m0 < 0) { this.ui.state && this.ui.state(); return; }
+      for (let c = 0; c < 4; c++) out[c].set(C[c].subarray(r.m0, r.m0 + N));
+    }
+    let peak = 0; for (let c = 0; c < 2; c++) { const d = out[c]; for (let k = 0; k < N; k++) { const v = Math.abs(d[k]); if (v > peak) peak = v; } }
+    // a soft seam where the lap wraps
+    const F = Math.round(sr * 0.006);
+    for (const d of out) for (let k = 0; k < F; k++) { const a = k / F; d[k] *= a; d[N - 1 - k] *= a; }
     if (peak < 0.0005) { this.ui.state && this.ui.state(); return; }   // nothing was played
-    const layer = { id: r.id, dry, wet, sec: this.loopSec, vol: 1, rev: true, echo: false, muted: false, hue: (this.layers.length * 47 + 330) % 360 };
+    this.addLayer({ id: r.id, dry, wet });
+    this.ui.state && this.ui.state();
+  }
+  // a finished loop joins the mix (also used when a saved さくひん is opened)
+  addLayer(o) {
+    const ctx = this.snd.ctx;
+    const layer = Object.assign({ vol: 1, rev: true, echo: false, muted: false, hue: (this.layers.length * 47 + 330) % 360 }, o, { sec: o.dry.duration });
+    if (layer.id == null) layer.id = this.nextId++; else this.nextId = Math.max(this.nextId, layer.id + 1);
     layer.chain = this.chain(layer, ctx, this.snd.layerBus, this.echoIn(ctx, this.snd.layerBus));
     this.layers.push(layer);
-    if (this.playing) { const t = this.snd.now() + 0.03; this.playLayer(layer, t, (((t - this.t0) % this.loopSec) + this.loopSec) % this.loopSec); }
-    this.ui.state && this.ui.state();
+    if (this.playing) {
+      const L = this.loopSec, now = this.snd.now(), t = now + 0.03;
+      // the rest of the current lap…
+      if (t > this.t0) { const at = (((t - this.t0) % L) + L) % L; if (at > 0.02 && L - at > 0.05) this.playLayer(layer, t, at); }
+      // …and the next top, if the scheduler has already passed it
+      const head = this.t0 + Math.max(0, Math.ceil((t - this.t0) / L)) * L;
+      if (this.beatAbs(head) <= this.done + 1e-6) this.playLayer(layer, Math.max(head, now + 0.005), Math.max(0, now + 0.005 - head));
+    }
+    return layer;
   }
   /* per-layer mixer: volume, reverb (the recorded room, on/off) and echo (a send to ONE shared tempo delay) — light at any layer count */
   chain(L, ctx, dest, echoIn) {
@@ -2031,6 +2147,61 @@ root.Looper = Looper; root.SONGS = SONGS; root.LOOP_BEATS = BEATS;
 
 </script>
 <script>
+/* ---------- さくひん (works): saved loops, kept only on this device (IndexedDB) ----------
+   A work = the recorded layers (audio, 16-bit) + their mixer settings + the backing song and tempo.
+   Two stores: 'meta' (small, for the shelf) and 'audio' (the sound), both keyed by the same id. Nothing leaves the device. */
+(function (root) {
+'use strict';
+function req(r) { return new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }); }
+function toI16(f) { const o = new Int16Array(f.length); for (let i = 0; i < f.length; i++) { const v = Math.max(-1, Math.min(1, f[i])); o[i] = v < 0 ? v * 32768 : v * 32767; } return o; }
+function toF32(a) { const o = new Float32Array(a.length); for (let i = 0; i < a.length; i++) o[i] = a[i] / 32768; return o; }
+
+class Works {
+  constructor(name) { this.name = name; this.db = null; }
+  async open() {
+    if (this.db) return this.db;
+    if (!root.indexedDB) throw new Error('no-idb');
+    const r = indexedDB.open(this.name, 1);
+    r.onupgradeneeded = () => { const db = r.result; if (!db.objectStoreNames.contains('meta')) db.createObjectStore('meta', { keyPath: 'id' }); if (!db.objectStoreNames.contains('audio')) db.createObjectStore('audio', { keyPath: 'id' }); };
+    this.db = await req(r);
+    return this.db;
+  }
+  async list() {
+    const db = await this.open(), all = await req(db.transaction('meta').objectStore('meta').getAll());
+    return all.sort((a, b) => b.created - a.created);
+  }
+  // looper → a stored work
+  async save(loop, extra) {
+    const db = await this.open(), id = Date.now(), no = extra.no;
+    const layers = loop.layers.map(L => ({ vol: L.vol, rev: L.rev, echo: L.echo, muted: L.muted, hue: L.hue, sr: L.dry.sampleRate,
+      ch: [L.dry.getChannelData(0), L.dry.getChannelData(1), L.wet.getChannelData(0), L.wet.getChannelData(1)].map(toI16) }));
+    const meta = { id, no, created: id, song: loop.song, click: loop.clickBpm, sec: loop.loopSec, n: layers.length, hues: layers.map(l => l.hue), toy: extra.toy };
+    const tx = db.transaction(['meta', 'audio'], 'readwrite');
+    tx.objectStore('audio').put({ id, layers }); tx.objectStore('meta').put(meta);
+    await new Promise((res, rej) => { tx.oncomplete = res; tx.onerror = () => rej(tx.error); tx.onabort = () => rej(tx.error || new Error('abort')); });
+    return meta;
+  }
+  // a stored work → AudioBuffers for the looper
+  async load(id, ctx) {
+    const db = await this.open(), a = await req(db.transaction('audio').objectStore('audio').get(id));
+    if (!a) throw new Error('missing');
+    return a.layers.map(l => {
+      const n = l.ch[0].length, dry = ctx.createBuffer(2, n, l.sr), wet = ctx.createBuffer(2, n, l.sr);
+      dry.getChannelData(0).set(toF32(l.ch[0])); dry.getChannelData(1).set(toF32(l.ch[1])); wet.getChannelData(0).set(toF32(l.ch[2])); wet.getChannelData(1).set(toF32(l.ch[3]));
+      return { dry, wet, vol: l.vol, rev: l.rev, echo: l.echo, muted: l.muted, hue: l.hue };
+    });
+  }
+  async remove(id) {
+    const db = await this.open(), tx = db.transaction(['meta', 'audio'], 'readwrite');
+    tx.objectStore('meta').delete(id); tx.objectStore('audio').delete(id);
+    await new Promise((res, rej) => { tx.oncomplete = res; tx.onerror = () => rej(tx.error); });
+  }
+}
+root.Works = Works;
+})(window);
+
+</script>
+<script>
 /* ---------- かん字 mode: show the words a 4th-grader has learned (学年別漢字配当表 1–4年) in kanji ----------
    The page is written in hiragana. With kanji on, every visible string (and aria-label/title) is swapped for its
    kanji version; strings the app changes later are caught by a MutationObserver. Only grade 1–4 kanji are used;
@@ -2064,8 +2235,23 @@ const EXACT = new Map([
   ['コードに あわせる', 'コードに合わせる'],
   ['WAV で かきだす', 'WAV で書き出す'],
   ['かるい ファイル（webm）', '軽いファイル（webm）'],
-  ['「ろくおん」で 1しゅう ろくおん。きこえた おとが そのまま まわるよ。なんかいでも かさねられるよ（バックの おんがくを かえると きえます）。かきだしは 2しゅうぶん（WAV は 48kHz / 24bit、ZIP に はいっています）。',
-   '「録音」で1周録音。聞こえた音がそのまま回るよ。何回でも重ねられるよ（バックの音楽を変えると消えます）。書き出しは2周分（WAV は 48kHz / 24bit、ZIP に入っています）。'],
+  ['「ろくおん」を おすと、つぎの ループの はじめから おわりまで 1しゅう ろくおん。きこえた おとが そのまま まわるよ。なんかいでも かさねられるよ（バックの おんがくを かえると きえます）。かきだしは 2しゅうぶん（WAV は 48kHz / 24bit、ZIP に はいっています）。',
+   '「録音」をおすと、次のループのはじめから終わりまで1周録音。聞こえた音がそのまま回るよ。何回でも重ねられるよ（バックの音楽を変えると消えます）。書き出しは2周分（WAV は 48kHz / 24bit、ZIP に入っています）。'],
+  ['ろくおん まで', '録音まで'],
+  ['ともだちに おしえる', '友だちに教える'],
+  ['リンクを コピー', 'リンクをコピー'],
+  ['まもなく ろくおん', 'まもなく録音'],
+  ['さくひん', '作品'],
+  ['さくひんに する', '作品にする'],
+  ['かさねた おとを さくひんに して、あとで きいたり つづきを かさねたり できるよ。', '重ねた音を作品にして、後で聞いたり続きを重ねたりできるよ。'],
+  ['さくひんは この たんまつの なかだけに ほぞんされます。', '作品はこのたんまつの中だけにほぞんされます。'],
+  ['まだ さくひんは ないよ', 'まだ作品はないよ'],
+  ['この ブラウザでは さくひんを ほぞん できません', 'このブラウザでは作品をほぞんできません'],
+  ['いっぱいで ほぞん できませんでした。いらない さくひんを けしてね', 'いっぱいでほぞんできませんでした。いらない作品を消してね'],
+  ['うまく ほぞん できませんでした', 'うまくほぞんできませんでした'],
+  ['うまく ひらけませんでした', 'うまく開けませんでした'],
+  ['ひらく', '開く'],
+  ['けす', '消す'],
   ['どれで あそぶ？', 'どれで遊ぶ？'],
   ['にくきゅう', '肉球'],
   ['しょくぱん', '食パン'],
@@ -2116,6 +2302,13 @@ const RX = [
   [/バックの おんがくを「(.+?)」に かえると、テンポが かわるので /, 'バックの音楽を「$1」に変えると、テンポが変わるので、'],
   [/クリックの はやさを (\d+) に かえると /, 'クリックの速さを $1 に変えると、'],
   [/かさねた おと（(\d+)こ）が きえます。ほんとうに かえますか？/, '重ねた音（$1こ）が消えます。本当に変えますか？'],
+  [/^「さくひん (\d+)」を ひらいたよ$/, '「作品 $1」を開いたよ'],
+  [/^さくひん (\d+) に したよ$/, '作品 $1 にしたよ'],
+  [/^さくひん (\d+) を ひらく$/, '作品 $1 を開く'],
+  [/^さくひん (\d+) を けす$/, '作品 $1 を消す'],
+  [/^「さくひん (\d+)」を けしますか？$/, '「作品 $1」を消しますか？'],
+  [/^いまの かさねた おと（(\d+)こ）は きえます。さくひんを ひらきますか？$/, '今の重ねた音（$1こ）は消えます。作品を開きますか？'],
+  [/^さくひん (\d+)$/, '作品 $1'],
   [/おうどう しんこう/g, '王道進行'],
   [/よるの ドライブ/g, '夜のドライブ'],
   [/のんびり スイング/g, 'のんびりスイング']
@@ -2340,6 +2533,7 @@ function followNote(p) {
 }
 const playing = p => p.voice || p.roll;
 stage.addEventListener('pointerdown', e => {
+  if (e.target.closest && e.target.closest('button,a,input')) return;   // (no controls live on the stage, but never swallow one)
   e.preventDefault(); snd.unlock();
   const [x, y] = local(e); try { stage.setPointerCapture(e.pointerId); } catch (er) {}
   const now = performance.now(), ok = body.grab(e.pointerId, x, y, now);
@@ -2632,15 +2826,18 @@ const ERASE_MSG = n => `かさねた おと（${n}こ）が きえます。ほ�
 /* ---- loop station UI ---- */
 let downloads = null;
 function loopUI() {
-  const rec = !!loop.rec;
+  const rs = loop.recStatus(), armed = !!rs && rs.state === 'armed', recording = !!rs && rs.state === 'rec';
   $('#playBtn').setAttribute('aria-pressed', loop.playing); $('#playBtn span').textContent = loop.playing ? 'とめる' : 'さいせい';
-  $('#recBtn').setAttribute('aria-pressed', rec); $('#recBtn span').textContent = rec ? 'ろくおん中…' : 'ろくおん';
+  $('#recBtn').setAttribute('aria-pressed', !!rs); $('#recBtn span').textContent = recording ? 'ろくおん中…' : armed ? 'じゅんび中…' : 'ろくおん';
   $('#undoBtn').disabled = !loop.layers.length; $('#clearBtn').disabled = !loop.layers.length;
   $('#layers').textContent = loop.layers.length ? `かさねた おと ${loop.layers.length}` : 'まだ かさねて ないよ';
   layerRows();
-  stage.classList.toggle('recording', rec); $('#recPill').hidden = !rec;
+  stage.classList.toggle('recording', recording);
+  $('#recPill').hidden = !rs; $('#recPill').classList.toggle('armed', armed); $('#recPillText').textContent = armed ? 'まもなく ろくおん' : 'ろくおん中';
+  if (!armed) $('#countdown').hidden = true;
   document.querySelectorAll('#songs .chip').forEach(b => b.setAttribute('aria-checked', b.dataset.id === loop.song));
   $('#clickRow').hidden = loop.song !== 'none';
+  const sw = document.getElementById('saveWork'); if (sw) sw.disabled = !loop.layers.length;
 }
 // one row per recorded layer: volume, reverb (ひびき), echo (こだま), delete
 let rowIds = '';
@@ -2725,11 +2922,68 @@ function buildLoopUI() {
   if (window.claude && window.claude.use) window.claude.use('downloads').then(d => { downloads = d; if (!d) { ex.hidden = exw.hidden = true; msg.textContent = 'ここでは かきだしが つかえません'; } }).catch(() => { ex.hidden = exw.hidden = true; });
   loopUI();
 }
-let lastBeat = -1;
+let lastBeat = -1, lastCd = -1;
 function loopTick() {
   const b = loop.playing ? Math.floor(loop.pos()) : -1;
   if (b !== lastBeat) { beatCells.forEach((c, i) => c.classList.toggle('on', i === b)); lastBeat = b; }
+  // countdown to the top of the next lap, where the recording starts
+  const rs = loop.recStatus(), cd = $('#countdown');
+  if (rs && rs.state === 'armed') {
+    const n = Math.max(1, Math.ceil(rs.left - 0.02));
+    if (cd.hidden) cd.hidden = false;
+    if (n !== lastCd) { const el = $('#cdNum'); el.textContent = n; el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); lastCd = n; }
+  } else if (!cd.hidden) { cd.hidden = true; lastCd = -1; }
 }
+
+/* ---- さくひん: the shelf of saved works (this device only) ---- */
+const works = new Works(BALL ? 'nyuuun-ball-works' : 'nyuuun-works');
+let savedSig = '', openId = null;
+const layerSig = () => loop.layers.map(L => L.id).join(',');
+async function renderWorks() {
+  const box = $('#workList');
+  let list; try { list = await works.list(); } catch (e) { $('#works').querySelector('.lrow').hidden = true; $('#worksMsg').textContent = 'この ブラウザでは さくひんを ほぞん できません'; box.replaceChildren(); return; }
+  box.replaceChildren();
+  if (!list.length) { const p = document.createElement('p'); p.className = 'note'; p.textContent = 'まだ さくひんは ないよ'; box.appendChild(p); return; }
+  for (const w of list) {
+    const d = new Date(w.created), z = v => String(v).padStart(2, '0'), song = w.song === 'none' ? `クリック ${w.click}` : (SONGS[w.song] || {}).name || '';
+    const card = document.createElement('div'); card.className = 'work' + (w.id === openId ? ' on' : ''); card.style.setProperty('--h', w.hues[0] || 330);
+    card.innerHTML = `<button type="button" class="wopen" aria-label="さくひん ${w.no} を ひらく"><span class="wdots" aria-hidden="true">${w.hues.slice(0, 6).map(h => `<i style="--h:${h}"></i>`).join('')}</span><b>さくひん ${w.no}</b><small>${d.getMonth() + 1}/${d.getDate()} ${z(d.getHours())}:${z(d.getMinutes())}</small><small>${song}・${w.n}こ</small></button><button type="button" class="wdel" aria-label="さくひん ${w.no} を けす">✕</button>`;
+    card.querySelector('.wopen').addEventListener('click', () => openWork(w));
+    card.querySelector('.wdel').addEventListener('click', async () => {
+      if (!(await ask(`「さくひん ${w.no}」を けしますか？`, 'けす', 'やめる'))) return;
+      try { await works.remove(w.id); } catch (e) {}
+      if (openId === w.id) openId = null; renderWorks();
+    });
+    box.appendChild(card);
+  }
+}
+async function saveWork() {
+  const msg = $('#worksMsg');
+  if (!loop.layers.length) { msg.textContent = 'さきに ろくおん してね'; return; }
+  const no = (store.get('workNo', 0) || 0) + 1;
+  $('#saveWork').disabled = true;
+  try {
+    const meta = await works.save(loop, { no, toy: theme.id });
+    store.set('workNo', no); savedSig = layerSig(); openId = meta.id;
+    msg.textContent = `さくひん ${no} に したよ`; renderWorks();
+  } catch (e) {
+    msg.textContent = e && (e.name === 'QuotaExceededError' || /quota/i.test(e.message || '')) ? 'いっぱいで ほぞん できませんでした。いらない さくひんを けしてね' : 'うまく ほぞん できませんでした';
+  }
+  $('#saveWork').disabled = !loop.layers.length;
+}
+async function openWork(w) {
+  snd.unlock(); if (!snd.ctx) return;
+  if (loop.layers.length && layerSig() !== savedSig && !(await ask(`いまの かさねた おと（${loop.layers.length}こ）は きえます。さくひんを ひらきますか？`, 'ひらく', 'やめる'))) return;
+  let layers; try { layers = await works.load(w.id, snd.ctx); } catch (e) { $('#worksMsg').textContent = 'うまく ひらけませんでした'; return; }
+  loop.stop(); loop.clear();
+  if (w.song === 'none') { loop.clickBpm = w.click; settings.click = w.click; store.set('clickBpm', w.click); $('#clickBpm').value = w.click; $('#clickVal').textContent = w.click; }
+  loop.setSong(w.song in SONGS ? w.song : 'none'); settings.song = loop.song; store.set('song', loop.song);
+  for (const l of layers) loop.addLayer(l);
+  savedSig = layerSig(); openId = w.id;
+  loop.start(0); loopUI(); renderWorks();
+  $('#worksMsg').textContent = `「さくひん ${w.no}」を ひらいたよ`;
+}
+function buildWorksUI() { $('#saveWork').addEventListener('click', () => { snd.unlock(); saveWork(); }); renderWorks(); }
 
 /* ---- UI ---- */
 function hideHint() { if (!state.touched) { state.touched = true; $('#hint').classList.add('gone'); } }
@@ -2794,9 +3048,24 @@ if (BALL) { // ball version: no cat words, no cat voice
   document.title = 'Nyuuun! ボール';
   $('.kicker').textContent = 'SQUISHY BALL TOY';
   $('.lede').innerHTML = 'ボールの スクイーズは がっき。<b>うえに いくほど たかい おと</b>。ひっぱると にゅいーん。<b>ろくおん</b>して かさねよう。';
-  $('footer').textContent = 'Nyuuun! ボール';
+  $('footer .foot').textContent = 'Nyuuun! ボール';
 }
-buildUI(); buildLoopUI(); setSkin(settings.skin);
+buildUI(); buildLoopUI(); buildWorksUI(); setSkin(settings.skin);
+// share (web version only: hidden inside Claude, and for a future App Store build where kids must not link out)
+{
+  const web = /^https?:$/.test(location.protocol) && !window.claude && !window.NY_APP;
+  if (web) {
+    const url = location.origin + location.pathname, text = BALL ? 'Nyuuun! ボール ── さわると おとが なる スクイーズ' : 'Nyuuun! ── さわると おとが なる くろねこの スクイーズ';
+    $('#share').hidden = false;
+    $('#shareLine').href = 'https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url);
+    $('#shareX').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+    if (navigator.share) { $('#shareNative').hidden = false; $('#shareNative').addEventListener('click', () => navigator.share({ title: document.title, text, url }).catch(() => {})); }
+    $('#shareCopy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(url); } catch (e) { const t = document.createElement('textarea'); t.value = url; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch (er) {} t.remove(); }
+      const el = $('#shareCopyText'); el.textContent = 'コピーしたよ'; setTimeout(() => { el.textContent = 'リンクを コピー'; }, 1600);
+    });
+  }
+}
 // app icon in the header (same image as the favicon) and the ひらがな / かん字 switch
 { const ic = document.querySelector('link[rel=icon]'); if (ic) $('#appIcon').src = ic.href; }
 {
